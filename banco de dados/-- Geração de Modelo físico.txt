@@ -1,0 +1,50 @@
+-- Geração de Modelo físico
+-- Sql 2019 - brModelo.
+
+CREATE DATABASE viajamos maranhão;
+
+use viajamos maranhão;
+
+
+-- TABELA RELACIONADA AO CLIENTE
+
+CREATE TABLE Cliente (
+    Cpf VARCHAR(11) not null,
+    Nome VARCHAR(50) not null,
+    E-mail VARCHAR(50) not null,
+    Telefone VARCHAR(11) not null,
+    PRIMARY KEY (Cpf)
+);
+
+-- TABELA RELACIONADA AO PEDIDO
+
+CREATE TABLE Pedido (
+    Num_Pedido INTEGER PRIMARY KEY auto_increment,
+    Data.pedido DATE not null,
+    Valor.total DOUBLE not null,
+    Forma_Pg VARCHAR(20) not null default 'Cartão de Crédito',
+    
+);
+
+
+-- TABELA RELACIONADA A PASSAGEM
+
+CREATE TABLE Passagem (
+    Id.passagem INTEGER PRIMARY KEY auto_increment,
+    Quantidade INTEGER not null,
+    Id_Destino INTEGER not null,
+	FOREIGN KEY (Id_Destino) REFERENCES Destino (Id.destino)
+ 
+);
+
+-- TABELAS RELACIONADA AO DESTINO
+
+CREATE TABLE Destino (
+    Id.destino INTEGER auto_increment,
+    Valor.destino DOUBLE not null,
+    Disponibilidade INTEGER not null,
+    PRIMARY KEY (Id.destino)
+);
+
+
+
